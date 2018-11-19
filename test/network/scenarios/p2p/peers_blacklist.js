@@ -142,7 +142,7 @@ module.exports = function(
 				it('node_1 should have only himself and node_0 disconnected', () => {
 					return utils.http.getPeers(4001).then(peers => {
 						peers.map(peer => {
-							if (peer.wsPort == 5000 || peer.wsPort == 5001) {
+							if (peer.wsPort === 5000 || peer.wsPort === 5001) {
 								expect(peer.state).to.be.eql(Peer.STATE.DISCONNECTED);
 							} else {
 								expect(peer.state).to.be.eql(Peer.STATE.CONNECTED);
@@ -198,7 +198,7 @@ module.exports = function(
 				it('node_0 should have every peer connected but himself', () => {
 					return utils.http.getPeers().then(peers => {
 						peers.map(peer => {
-							if (peer.wsPort == 5000) {
+							if (peer.wsPort === 5000) {
 								expect(peer.state).to.be.not.eql(Peer.STATE.CONNECTED);
 							} else {
 								expect(peer.state).to.be.eql(Peer.STATE.CONNECTED);
